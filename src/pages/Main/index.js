@@ -1,7 +1,8 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Repository from '~/components/Repository';
 import {
-  Container, Form, Input, Submit, Title
+  Container, Form, Input, Submit, Title, List
 } from './styles';
 
 export default function Main() {
@@ -18,6 +19,23 @@ export default function Main() {
 <Icon name="add" size={22} color="#FFF" />
       </Submit>
       </Form>
+
+      <List
+        keyboardShouldPersistTaps="handled"
+        data={[
+          {
+            id: 1,
+            name: 'wendreof',
+            description: 'wendreof repository',
+            stars: 1234,
+            forks: 199,
+          },
+        ]}
+        KeyExtractpr={item => String(item.id)}
+        renderItem={({item}) => (
+        <Repository data={item}/>
+        )}
+        />
     </Container>
   );
 }
